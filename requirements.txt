@@ -1,0 +1,23 @@
+# ORM and Database Interaction
+SQLAlchemy==2.0.0  # Handles database interactions
+
+# CLI framework
+Click==8.1.3  # For creating command-line commands
+
+# Password hashing and security
+Werkzeug==2.3.6  # Used for secure password hashing
+
+# Testing framework
+pytest==7.3.1  # For running unit tests
+
+# For managing environment variables (if you're using .env files)
+python-dotenv==1.0.0  # Optional but useful for loading environment variables
+
+# Database migrations (if you're using Alembic for schema migrations)
+alembic==1.11.0  # Optional if you're using Alembic for database migrations
+
+# PostgreSQL adapter (if you're using PostgreSQL)
+psycopg2-binary==2.9.6  # For PostgreSQL database connections
+
+# Date handling (used for date-related operations in bookings)
+python-dateutil==2.8.2  # For handling dates in the application

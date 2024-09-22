@@ -2,7 +2,7 @@
 
 from sqlalchemy import Column, Integer, ForeignKey, Date, String
 from sqlalchemy.orm import relationship
-from modelss import Base
+from models import Base
 
 class Booking(Base):
     """

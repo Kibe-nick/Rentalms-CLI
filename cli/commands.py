@@ -1,10 +1,19 @@
 # cli/commands.py
 
 import click
+import sys
+import os
 from services.user_service import create_user, authenticate_user
 from services.booking_service import create_booking, cancel_booking
 from models import SessionLocal, User
 from datetime import datetime
+# Add the root directory (Rentalms-CLI) to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+@click.group()
+def cli():
+    """Rental Management CLI."""
+    pass
 
 @click.command('create-user')
 @click.argument('name')
@@ -12,9 +21,11 @@ from datetime import datetime
 @click.argument('password')
 @click.option('--admin', is_flag=True, help='Flag to create an admin user.')
 def create_user_cli(name, email, password, admin):
+    print("Executing create-user command")
     """
     CLI command to create a new user.
     """
+    click.echo("Creating user...")
     session = SessionLocal()
     try:
         user = create_user(session, name, email, password, is_admin=admin)

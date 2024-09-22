@@ -1,5 +1,5 @@
-from modelss.booking import Booking
-from modelss.room import Room
+from models.booking import Booking
+from models.room import Room
 from datetime import datetime
 
 def create_booking(session, user_id, room_id, start_date, end_date):

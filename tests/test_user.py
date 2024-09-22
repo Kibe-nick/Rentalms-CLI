@@ -1,4 +1,4 @@
-from modelss.user import User
+from models.user import User
 from services.user_service import create_user, authenticate_user
 import pytest
 

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
-from modelss import Base  # Import the Base from your models/__init__.py
+from models import Base  # Import the Base from your models/__init__.py
 
 class Apartment(Base):
     """

@@ -1,5 +1,5 @@
-from modelss.room import Room
-from modelss.apartment import Apartment
+from models.room import Room
+from models.apartment import Apartment
 import pytest
 
 def test_create_room(session):

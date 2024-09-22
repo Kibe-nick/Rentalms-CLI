@@ -14,5 +14,7 @@
                 "verify_ssl": true
             }
         ]
-    }
+    },
+    "default": {},
+    "develop": {}
 }

@@ -1,5 +1,5 @@
 from datetime import date
-from modelss import Booking, User, Room
+from models import Booking, User, Room
 from services.booking_service import create_booking, cancel_booking
 import pytest
 
