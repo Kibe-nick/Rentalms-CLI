@@ -7,20 +7,20 @@ def test_create_apartment(session):
     Test creating an apartment and ensuring its details are stored correctly.
     """
     # Create an apartment
-    apartment = Apartment(name="Sunset Apartments", address="789 Pine Street")
+    apartment = Apartment(name="Sunset Apartments", location="789 Pine Street")
     session.add(apartment)
     session.commit()
 
     # Verify the apartment's details
     assert apartment.name == "Sunset Apartments"
-    assert apartment.address == "789 Pine Street"
+    assert apartment.location == "789 Pine Street"
 
 def test_apartment_with_multiple_rooms(session):
     """
     Test that an apartment can have multiple rooms.
     """
     # Create an apartment
-    apartment = Apartment(name="Evergreen Apartments", address="101 Forest Lane")
+    apartment = Apartment(name="Evergreen Apartments", location="101 Forest Lane")
     session.add(apartment)
     session.commit()
 
