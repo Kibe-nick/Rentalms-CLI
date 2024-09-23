@@ -25,14 +25,18 @@ cd Rentalms-cli
 
 2. Create a virtual environment: It's recommended to use a virtual environment to manage dependencies.
 
+``bash
 python3 -m venv venv
 
+``bash
 source venv/bin/activate  # For Linux/MacOS
 
+``bash
 venv\Scripts\activate  # For Windows
 
 3. Install dependencies: Install the necessary Python packages:
 
+``bash
 pip install -r requirements.txt
 
 This will install the following key dependencies:
@@ -45,10 +49,11 @@ This will install the following key dependencies:
 4. Set up the database: Ensure your database is configured and running. Update the DATABASE_URL in the project’s settings to connect to your PostgreSQL (or preferred) database.
 
 Example .env file:
-DATABASE_URL=postgresql://username:password@localhost/Rentalms
+DATABASE_URL='sqlite:///database.db'
 
 5. Run database migrations: Set up your database schema with the following:
 
+``bash
 alembic upgrade head
 
 ## Usage
@@ -56,24 +61,35 @@ Once installed, you can use the following commands in the CLI:
 
 1. Create a New User: This command creates a new user (optionally as an admin) by providing a name, email, and password.
 
-PYTHONPATH=$(pwd) python cli/commands.py create-user <name> <email> <password> [--admin]
+``bash
+python rentalms.py create-user <name> <email> <password> [--admin]
 
 Example:
-PYTHONPATH=$(pwd) python cli/commands.py create-user "John Doe" "john@example.com" "securepassword" --admin
+python rentalms.py create-user "John Doe" "john@example.com" "securepassword" --admin
 
 2. Book a Room: This command allows a user to book a room by specifying their email, the room ID, and the booking duration (start and end dates).
 
-PYTHONPATH=$(pwd) python cli/commands.py  book-room <user_email> <room_id> <start_date> <end_date>
+ ``bash
+ python rentalms.py  book-room <user_email> <room_id> <start_date> <end_date>
 
 Example:
-PYTHONPATH=$(pwd) python cli/commands.py  book-room "john@example.com" 101 2024-10-01 2024-10-10
+python rentalms.py  book-room "john@example.com" 101 2024-10-01 2024-10-10
 
 3. Cancel a Booking: Use this command to cancel an existing booking by providing the booking ID.
 
-PYTHONPATH=$(pwd) python cli/commands.py cancel-booking <booking_id>
+ ``bash
+ python rentalms.py cancel-booking <booking_id>
 
 Example:
-PYTHONPATH=$(pwd) python cli/commands.py cancel-booking 3
+python rentalms.py cancel-booking 3
+
+4. Create an Apartment: Use this command to create a new apartment
+
+``bash
+python rentalms.py create-apartment <name> <location> <num_rooms>
+
+Example:
+python rentalms.py create-apartment "New Apartments" "Nairobi" "12"
 
 ## Project Structure
 The project is structured as follows:
