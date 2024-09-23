@@ -8,9 +8,9 @@ class Apartment(Base):
     """
     __tablename__ = 'apartments'
 
-    id = Column(Integer, primary_key=True)  # Unique apartment ID
-    name = Column(String, nullable=False)   # Name of the apartment complex
-    address = Column(String, nullable=False)  # Physical address
-
+    id = Column(Integer, primary_key=True, index=True)  # Unique apartment ID
+    name = Column(String, index=True)   # Name of the apartment complex
+    location = Column(String)  # Physical address
+    num_rooms = Column(Integer)
     # Relationship to rooms
     rooms = relationship("Room", back_populates="apartment")

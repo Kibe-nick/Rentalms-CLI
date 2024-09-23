@@ -3,6 +3,7 @@
 import click
 import sys
 import os
+from services.apartment_service import create_apartment  
 from services.user_service import create_user, authenticate_user
 from services.booking_service import create_booking, cancel_booking
 from models import SessionLocal, User
@@ -15,6 +16,7 @@ def cli():
     """Rental Management CLI."""
     pass
 
+# Create a new user
 @click.command('create-user')
 @click.argument('name')
 @click.argument('email')
@@ -35,6 +37,7 @@ def create_user_cli(name, email, password, admin):
     finally:
         session.close()
 
+#Book a room 
 @click.command('book-room')
 @click.argument('user_email')
 @click.argument('room_id', type=int)
@@ -59,6 +62,7 @@ def book_room_cli(user_email, room_id, start_date, end_date):
     finally:
         session.close()
 
+# cancel a Booking
 @click.command('cancel-booking')
 @click.argument('booking_id', type=int)
 def cancel_booking_cli(booking_id):
@@ -73,3 +77,31 @@ def cancel_booking_cli(booking_id):
         click.echo(f"Error: {e}")
     finally:
         session.close()
+
+# Create an Apartment
+@click.command('create-apartment')
+@click.argument('name')
+@click.argument('location')
+@click.argument('num_rooms', type=int)
+
+def create_apartment_cli(name, location, num_rooms):
+    """CLI command to create a new apartment."""
+    click.echo("Creating apartment...")
+    session = SessionLocal()
+    try:
+        apartment = create_apartment(session, name, location, num_rooms)
+        click.echo(f"Apartment '{apartment.name}' created with ID {apartment.id}")
+    except Exception as e:
+        click.echo(f"Error: {e}")
+    finally:
+        session.close()
+
+
+# Register the commands
+cli.add_command(create_user_cli)
+cli.add_command(book_room_cli)
+cli.add_command(cancel_booking_cli)
+cli.add_command(create_apartment_cli)
+
+if __name__ == '__main__':
+    cli()
